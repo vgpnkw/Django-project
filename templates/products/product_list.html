@@ -1,0 +1,45 @@
+{% extends 'products/base.html'%}
+{% block header %} bg1 {% endblock header %}
+{% block product %}
+                    <div class="left-ads-display col-lg-9">
+                        <div class="row">
+                            {%  for product in product_list %}
+                            <div class="col-md-4 product-men">
+                                <div class="product-shoe-info editContent text-center mt-lg-4" >
+                                    <div class="men-thumb-item">
+                                        <img src=" {{ product.image.url }}"class="img-fluid" alt="" >
+                                    </div>
+                                    <div class="item-info-product">
+                                        <h4 class="">
+                                            <a href={{ product.get_absolute_url }} class="editContent" >
+                                                {{ product.title }}
+                                            </a>
+                                        </h4>
+
+                                        <div class="product_price">
+                                            <div class="grid-price">
+                                                <span class="money editContent" >«{{ product.year }}»</span>
+                                            </div>
+                                        </div>
+                                        {% if user.is_authenticated %}
+                                        {% if user.is_superuser %}
+                                        <form action="{% url "prod_delete" product.id %}" method="post" style="display: inline">
+                                              {% csrf_token %}
+                                        <input type="hidden" name="album_id" value="{{ product.id }}">
+                                            <button type="submit">
+                                                <span>Удалить</span>
+                                            </button>
+                                            </form>
+                                        {% endif %}
+                                    {% endif %}
+
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+
+{% endblock product %}

@@ -1,0 +1,38 @@
+{% extends 'products/base.html' %}
+{% load static %}
+{% block title %} {{ product.title }}{% endblock title %}
+ {% block container %}
+            <div class="container py-md-3">
+            {% endblock container %}
+ {% block sidebar %}
+                  <div class="side-bar col-lg-3">
+                   {% endblock sidebar %}
+
+{% block product %}
+    <div class="left-ads-display col-lg-9">
+        <div class="row">
+            {% for product in favourite_prod %}
+                <div class="col-md-4 product-men">
+                <div class="product-shoe-info editContent text-center mt-lg-4">
+                    <div class="men-thumb-item">
+                        <img src={{ product.image.url }} class="img-fluid" alt="">
+                    </div>
+                    <div class="item-info-product">
+                        <h4 class="">
+                            <a href="{{ product.get_absolute_url }}" class="editContent">
+                                {{ product.name }}
+                            </a>
+                        </h4>
+
+                        <div class="product_price">
+                            <div class="grid-price">
+                                <span class="money editContent">{{ product.price }}$</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock product %}

@@ -1,0 +1,36 @@
+{% load product_tags %}
+
+                         <div class="search-bar w3layouts-newsletter">
+                            <h3 class="sear-head editContent" >Поиск устройства</h3>
+
+                            <form action="{% url 'search' %}" method="get" class="d-flex editContent" >
+
+                                <input type="search" placeholder="Введите название..." name="q" class="form-control" required="">
+                                <button type="submit" class="btn1 btn" ><span class="fa fa-search" aria-hidden="true" ></span></button>
+                            </form>
+                        </div>
+                 <form action="{% url 'filter' %}" method="get" >
+
+                        <!-- // preference -->
+                        <!-- discounts -->
+
+                        <div class="left-side">
+                            <h3 class="sear-head editContent" >Год</h3>
+                            <ul class="w3layouts-box-list">
+                                {% for product in view.get_years %}
+                                <li class="editContent" >
+                                    <input type="checkbox" class="input-group" name="year" value="{{ product.year }} ">
+                                    <span class="span editContent" >{{product.year}}</span>
+                                </li>
+                                {% endfor %}
+
+                            </ul>
+                        </div>
+                    <button type="submit">Найти</button>
+                 </form>
+                        <!-- //discounts -->
+
+{% get_last_products %}
+                        <!-- //reviews -->
+                        <!-- deals -->
+
